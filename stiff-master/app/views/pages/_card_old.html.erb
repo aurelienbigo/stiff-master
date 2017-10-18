@@ -1,0 +1,29 @@
+<div class="card-product">
+  <h3 class="card-title"><%= guitar.name %></h3>
+  <div class="card hvr-border-fade" style="background-image: url('<%= image_path('card-guitar.jpg') %>');" >
+    <!-- <div class="card-category"> Keith Richard's guitar</div> -->
+    <div class="card-guitar-image-container">
+      <p>desc : <%= guitar.description %></p>
+      <p>created by : <%= guitar.user.username %></p>
+    </div>
+    <!-- end of card-guitar-image-container -->
+    <%= link_to "", guitar_path(guitar), class: "card-link" %>
+    <!-- <i class="fa fa-star-o card-star upvote-star"></i> -->
+    <div class="card-star upvote-star">
+      <%= render 'guitars/like', guitar: guitar %>
+    </div>
+  </div>
+  <!-- end of card -->
+  <div class="card-sub-info">
+    <!-- <h3>Keith Richard's guitar</h3> -->
+    <p><%= guitar.get_likes.size %> <span><i class="fa fa-star"></i></span> |
+    <% if guitar.price.nil? %>
+      <span>Pas de prix</span>
+    <% else %>
+      <%= guitar.price %> €
+    <% end %>
+    </p>
+  </div>
+  <!-- end of sub-info -->
+</div>
+<!-- end of card-product -->

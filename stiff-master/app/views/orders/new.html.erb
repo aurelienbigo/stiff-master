@@ -1,0 +1,85 @@
+<div class="wrapper guitar-show-wrapper bg-background">
+  <div class="container guitar-description-container">
+<!-- <div class="wrapper new-order-form-wrapper">
+  <div class="container new-order-form-container"> -->
+
+    <div class="row section-title">
+      <div class="title-middle-line"></div>
+      <h1 class="text-center section-title-h1">Quelle est votre adresse ?</h1>
+      <div class="title-middle-line"></div>
+    </div>
+
+    <div class="row order-steps-details-row">
+      <div class="col-sm-2 col-sm-offset-4 text-center order-steps-details-col-1">
+        <%= image_tag('number-one-icon.png', id: "number-one-icon") %>
+        <p>Confirmation de l'adresse</p>
+      </div>
+      <div class="col-sm-2 text-center order-steps-details-col-2">
+        <%= image_tag('number-two-icon.png', id: "number-two-icon") %>
+        <p>Récapitulatif & paiement</p>
+      </div>
+    </div>
+    <!-- row end -->
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <% @user = current_user %>
+        <% if @user.addresses.present? %>
+          <% @user.addresses.each do |address| %>
+            <div class="display-address text-center"></div>
+            <h3><%= address.name %></h3>
+            <p><%= address.street1 %></p>
+            <p><%= address.street2 %></p>
+            <p><%= address.zip_code %></p>
+            <p><%= address.city %></p>
+            <div class="btn-modif-address btn" data-id="<%= address.id %>"><p>modifier</p></div>
+            <%= simple_form_for [@guitar, @order] do |f| %>
+            <%= f.input :delivery_address, input_html: {value: address.street1}, as: :hidden %>
+            <%= f.input :delivery_address2, input_html: {value: address.street2}, as: :hidden %>
+            <%= f.input :zip_code, input_html: {value: address.zip_code}, as: :hidden %>
+            <%= f.input :city, input_html: {value: address.city}, as: :hidden  %>
+            <%= f.input :country, input_html: {value: "France"} , as: :string, as: :hidden %>
+            <%= f.button :submit, value: "Choisir", class: "btn btn-fade-small collection-guitar-edit-btn buy-btn", id: "order-confirm-btn" %>
+            <% end %>
+
+            <div class="form-new-address form-modify-address" data-id="<%= address.id %>" style="display: none;">
+              <%= simple_form_for(address, url: update_address_order_path) do |f| %>
+                <%= f.error_notification %>
+                <div class="dashboard-form-inputs">
+                  <div class="form-inline input"><p>Nom : </p><%= f.input :name, label: false %></div>
+                  <div class="form-inline input"><p>Rue : </p><%= f.input :street1, label: false %></div>
+                  <div class="form-inline input"><p>Complément : </p><%= f.input :street2, label: false %></div>
+                  <div class="form-inline input"><p>Code postal : </p><%= f.input :zip_code, label: false %></div>
+                  <div class="form-inline input"><p>Ville : </p><%= f.input :city, label: false %></div>
+                  <div class="form-inline input"><p>Pays : </p><%#= f.input :country, label: false %></div>
+                  <div class="form-inline input"><%= f.input :id, :as => :hidden %></div>
+                </div>
+                <div classe="dashboard-form-action">
+                  <%= f.button :submit, "Enregistrer les modifications", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+        </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="form-content form-new-address">
+            <%= simple_form_for [@guitar, @order] do |f| %>
+              <%= f.input :delivery_address, label: "addresse de livraison" %>
+              <%= f.input :zip_code %>
+              <%= f.input :city %>
+              <%= f.input :country, as: :string %>
+              <%= f.button :submit, value: "Je confirme", class: "btn btn-fade-small collection-guitar-edit-btn buy-btn", id: "order-confirm-btn" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- end of col-sm-8 -->
+    </div>
+    <!-- end of row -->
+
+  </div>
+  <!-- end of container -->
+</div>
+

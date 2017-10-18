@@ -1,0 +1,43 @@
+body {
+  background-color: $background;
+}
+
+.fullpage {
+  margin-top: -70px;
+}
+
+#home-title {
+  margin-bottom: 50px;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 2rem;
+}
+.btn--ghost {
+  background: transparent;
+  color: white;
+  border: 1px solid #dfdfdf;
+}
+.btn--ghost:hover {
+  background: white;
+  color: black;
+}
+
+.section {
+  width: 100vw;
+  min-height: 400px;
+  height: 100vh;
+  color: black;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+}
+
+
+
+

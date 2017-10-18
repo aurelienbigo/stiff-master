@@ -1,0 +1,99 @@
+/* Profil info */
+
+#dashboard-form {
+  margin-top: 50px;
+  .input {
+    margin: 20px 20px;
+    display: flex;
+    .form-control {
+      background-color: $background;
+      border: none;
+      border-bottom: 1px solid $light-gray;
+      background-color: none;
+      box-shadow: none;
+    }
+    .form-control:focus {
+      box-shadow: 0px 0px 6px 2px $lighter-gray;
+    }
+  }
+  p {
+    margin: auto;
+  }
+}
+
+.dashboard-h {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#dashboard-form-action {
+  text-align: left;
+  margin-top: 40px;
+}
+
+/* Orders */
+
+.raw-order {
+  display: flex;
+  .raw-order-items {
+    padding: 15px 15px;
+    text-align: center;
+  }
+  .raw-order-title {
+    padding: 15px 15px;
+    text-align: center;
+    border-bottom: 1px solid $light-gray;
+    border-right: 1px solid $light-gray;
+    border-left: 1px solid $light-gray;
+  }
+}
+.raw-link-order {
+  transition-duration: 0.3s;
+  &:hover {
+    cursor: pointer;
+    background-color: #e9e9e9;
+  }
+}
+
+
+.order-id {
+  flex: 0 0 12%;
+}
+
+.order-amount,
+.order-status {
+  flex: 0 0 15%;
+}
+
+.order-guitar {
+  flex: 0 0 33%;
+}
+
+.order-date {
+  flex: 0 0 25%;
+}
+
+#tab-orders {
+  margin-top: 30px;
+}
+
+.raw-order-title {
+  font-weight: bold;
+}
+
+.btn {
+  transition-duration: 0.3s;
+}
+
+.dashboard-form-action {
+  text-align: center;
+}
+
+#h2-my-addresses {
+  margin-top: 60px;
+}
+.tab-content {
+  width: 100%;
+  text-align: left;
+}
+

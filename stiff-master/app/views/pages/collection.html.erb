@@ -1,0 +1,67 @@
+<div class="wrapper collection-wrapper">
+  <div class="container guitar-collection-container">
+    <!-- 1st row -->
+    <div class="row">
+      <div class="row section-title">
+        <div class="title-middle-line"></div>
+        <h1 class="text-center section-title-h1">Guitares que j'ai créées</h1>
+        <div class="title-middle-line"></div>
+      </div>
+      <% if !@my_guitars.empty? %>
+        <% @my_guitars.each do |guitar| %>
+          <div class="col-sm-6">
+            <div id="card-container_<%= guitar.id %>">
+              <%= render 'card_collection', guitar: guitar %>
+            </div>
+            <div class="text-right card-guitar-edit-btn">
+              <%= link_to "Edit", edit_guitar_path(guitar), class: "btn btn-fade-small collection-guitar-edit-btn" %>
+              <%= link_to "Acheter", new_guitar_order_path(guitar_id: guitar.id), class: "btn btn-fade-small collection-guitar-edit-btn buy-btn" %>
+            </div>
+          </div>
+          <!-- end of col-sm-6 -->
+        <% end %>
+        <!-- end of block -->
+      <% else %>
+        <div class="text-center">
+          <p>Vous n'avez créé aucune guitare...</p>
+          <%= link_to "Personnaliser une guitare", new_guitar_path, class: "btn btn-fade-small collection-guitar-edit-btn" %>
+      <% end %>
+    </div>
+    <!-- end of 1st row -->
+
+    <!-- 2nd row -->
+    <div class="row">
+      <div class="row section-title">
+        <div class="title-middle-line"></div>
+        <h1 class="text-center section-title-h1">Guitares que j'ai aimées</h1>
+        <div class="title-middle-line"></div>
+      </div>
+      <% if !@liked_guitars.empty? %>
+        <% @liked_guitars.each do |guitar| %>
+          <% if guitar.user_id != current_user.id %>
+            <div class="col-sm-6">
+              <div id="card-container_<%= guitar.id %>">
+                <%= render 'card_collection', guitar: guitar %>
+              </div>
+              <div class="text-right card-guitar-edit-btn">
+                <%= link_to "Edit", edit_guitar_path(guitar), class: "btn btn-fade-small collection-guitar-edit-btn" %>
+                <%= link_to "Acheter", new_guitar_order_path(guitar_id: guitar.id), class: "btn btn-fade-small collection-guitar-edit-btn buy-btn" %>
+              </div>
+              <!-- end of card-guitar-edit-btn -->
+            </div>
+            <!-- end of col-sm-6 -->
+          <% end %>
+          <!-- end of condition -->
+        <% end %>
+        <!-- end of each block -->
+      <% else %>
+        <div class="text-center">
+          <p>Vous n'avez aimé aucune guitare...</p>
+          <%= link_to "Voir des guitares", guitars_path, class: "btn btn-fade-small collection-guitar-edit-btn" %>
+        </div>
+      <% end %>
+    </div>
+    <!-- end of 2nd row -->
+  </div>
+  <!-- end of container -->
+</div>

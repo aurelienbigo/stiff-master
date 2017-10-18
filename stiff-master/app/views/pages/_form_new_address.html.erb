@@ -1,0 +1,14 @@
+<%= simple_form_for(@address, url: new_address_path) do |f| %>
+    <%= f.error_notification %>
+    <div class="dashboard-form-inputs">
+      <div class="form-inline input"><p>Nom : </p><%= f.input :name, label: false %></div>
+      <div class="form-inline input"><p>Rue : </p><%= f.input :street1, label: false %></div>
+      <div class="form-inline input"><p>Complément : </p><%= f.input :street2, label: false %></div>
+      <div class="form-inline input"><p>Code postal : </p><%= f.input :zip_code, label: false %></div>
+      <div class="form-inline input"><p>Ville : </p><%= f.input :city, label: false %></div>
+      <div class="form-inline input"><p>Pays : </p><%= f.input :country, collection: ["France", "Belgique"], label: false %></div>
+    </div>
+    <div classe="dashboard-form-action">
+      <%= f.button :submit, "Enregistrer les modifications", class: "btn btn-primary" %>
+    </div>
+<% end %>

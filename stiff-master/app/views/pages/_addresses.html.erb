@@ -1,0 +1,55 @@
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="dashboard-h" id="h2-my-addresses">Mes adresses</h2>
+    </div>
+
+    <!-- If user have no address -->
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <% if @user.addresses.empty? %>
+          <p>Vous n'avez pas d'adresse enregistré</p>
+          <p id="create-address" >Créer une adresse</p>
+            <div class="form-new-address form-modify-address" >
+              <%= render "form_new_address" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display all addresses -->
+  <div class="row">
+      <% @user.addresses.each do |address| %>
+        <div class="display-address text-center"></div>
+          <h3><%= address.name %></h3>
+          <p><%= address.street1 %></p>
+          <p><%= address.street2 %></p>
+          <p><%= address.zip_code %></p>
+          <p><%= address.city %></p>
+          <p><%= address.country %></p>
+          <p><%= "Addresse principale" if address.main %></p>
+          <div class="btn-modif-address btn" data-id="<%= address.id %>"><p>modifier</p></div>
+
+        <div class="form-new-address form-modify-address" data-id="<%= address.id %>" style="display: none;">
+          <%= simple_form_for(address, url: update_address_path) do |f| %>
+            <%= f.error_notification %>
+              <%= f.input :name, label: "Nom", Placeholder: "Nom" %>
+              <%= f.input :street1, label: "Rue", Placeholder: "Rue" %>
+              <%= f.input :street2, label: "Adresse (suite)", Placeholder: "Adresse (suite)" %>
+              <%= f.input :zip_code, label: "Code postal", Placeholder: "Code postal" %>
+              <%= f.input :city, label: "Ville", Placeholder: "Ville" %>
+              <%= f.input :country, collection: ["France", "Belgique"], label: false %>
+              <%= f.input :id, :as => :hidden %>
+              <%= f.button :submit, "Enregistrer les modifications", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+
+
+  <div class="row">
+    <div id="btn-new-address" class="btn"><p>Ajouter une adresse</p></div>
+      <div id="form-new-other-address" style="display: none;" >
+        <%= render "form_new_address" %>
+      </div>
+  </div>

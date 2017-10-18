@@ -1,0 +1,32 @@
+<div class="card-product" <%= render 'pages/data_card_product', guitar: guitar%>>
+  <h3 class="card-title"><%= guitar.name %></h3>
+  <div class="card">
+    <div class="card-guitar-image-container">
+      <%= render 'guitars/guitar_template'%>
+    </div>
+    <div class="shadow"></div>
+    <!-- end of card-guitar-image-container -->
+    <%= link_to "", guitar_path(guitar), class: "card-link" %>
+    <div class="card-star">
+      <div class="card-guitar-edit-btn">
+        <%= link_to "Modifier", edit_guitar_path(guitar), class: "btn btn-fade-small" %>
+      </div>
+      <%#= render 'guitars/like', guitar: guitar %>
+    </div>
+  </div>
+  <!-- end of card -->
+  <div class="card-sub-info">
+    <p><%#= guitar.get_likes.size %> <!-- <span><i class="fa fa-star"></i></span> -->
+      <% if guitar.price.nil? %>
+        <span>Pas de prix</span>
+      <% else %>
+        <span><%= humanized_money(guitar.price) %> €</span>
+      <% end %>
+    </p>
+    <div class="card-description">
+      <div><%= guitar.description %></div>
+    </div>
+  </div>
+  <!-- end of sub-info -->
+</div>
+<!-- end of card-product -->

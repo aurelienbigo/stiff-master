@@ -1,0 +1,93 @@
+<% content_for :meta_title, "#{@guitar.name}" %>
+<% content_for :meta_description, @guitar.description %>
+<%# content_for :meta_image, @guitar.picture %>
+<span class="attributs" <%= render 'pages/data_card_product', guitar: @guitar%> >
+</span>
+
+<div class="wrapper guitar-show-wrapper bg-background">
+  <div class="container guitar-description-container">
+    <div class="show-head-container">
+      <div class="show-head-title">
+        <h1><%= @guitar.name %></h1>
+      </div>
+
+      <div class="show-head-cta">
+        <%= link_to "Modifier", edit_guitar_path(@guitar), class: "btn btn-fade-small btn-large", id: "btn-show-edit" %>
+        <div class="buy-cta">
+          <%= link_to "ACHETER", new_guitar_order_path(guitar_id: @guitar.id), class: 'btn btn-fade-small collection-guitar-edit-btn buy-btn' %>
+        </div>
+      </div>
+      <!-- show-head-cta end -->
+      <div class="buy-cta-price">
+        <p><%= humanized_money(@guitar.price) %> €</p>
+      </div>
+    </div>
+    <!-- show-head-container end -->
+
+    <div class="show-guitar-img-container">
+      <div class="svg_show">
+        <div id="img-guitar-show">
+          <%= render 'guitar_template' %>
+        </div>
+      </div>
+    </div>
+    <!-- show-guitar-img-container end -->
+
+    <div class="show-guitar-infos-container">
+      <div class="row">
+        <div class="col-sm-3 text-center">
+          <%= image_tag('show-guitar-quotes.png', class: "show-guitar-info-img") %>
+          <div class="show-guitar-infos-data">
+            <p><%= @guitar.description %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
+          <%= image_tag(@guitar.category.picture, class: "show-guitar-info-img") %>
+          <div class="show-guitar-infos-data">
+            <p><%= @guitar.category.name %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
+          <%= image_tag('show-guitar-hold.png', class: "show-guitar-info-img") %>
+          <div class="show-guitar-infos-data">
+            <p><%= @guitar.dexterity.name %></p>
+          </div>
+        </div>
+        <div class="col-sm-3 text-center">
+          <%= image_tag('show-guitar-info.png', class: "show-guitar-info-img") %>
+          <div class="show-guitar-infos-data" id="show-guitar-infos-data-detail">
+            <!-- <p>Forme : <%#= @guitar.shape.name %></p> -->
+            <!-- <p>forme de la tête: <%#= @guitar.head_shape.name %></p> -->
+            <p>Bois du corps : <span class="guitar-body-wood"><%= @guitar.body_wood.name %></span></p>
+            <p>Bois du manche : <span class="guitar-fret-wood"><%= @guitar.fret_wood.name %></span></p>
+            <!-- <p>Bois du col : <%#= @guitar.neck_wood.name %></p> -->
+            <% if @guitar.color.present? %>
+              <p>Couleur : <span class="guitar-color"><%= @guitar.color.name %></span></p>
+            <% end %>
+            <p>Pickguard : <span class="guitar-pickguard"><%= @guitar.pickguard.name %></span></p>
+            <p>Micros : <span class="guitar-pickup"><%= @guitar.pickup.name %></span></p>
+            <!-- <p>Finition : <%#= @guitar.finish.name %></p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- show-guitar-infos-container end -->
+  </div>
+  <!-- end of guitar-description-container -->
+<script>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8&appId=343125269381922";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $(document).ready(function() {
+      show_guitar();
+    });
+  <% end %>
+<% end %>
+</script>

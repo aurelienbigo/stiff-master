@@ -1,0 +1,42 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Paddings
+.padded {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+// Backgrounds
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: $gray;
+}
+.bg-blue {
+  background: $blue;
+}
+.bg-beige {
+  background: $beige;
+}
+.bg-background {
+  background: $background;
+}
+.bg-darker-gray {
+  background: $darker-gray;
+}
+.bg-lighter-grey {
+  background: $lighter-gray;
+}
+.bg-light-grey {
+  background: $light-gray;
+}
+.bg-screen-height {
+  min-height: calc(100vh - 70px);
+}
+.bg-white {
+  background: white;
+}

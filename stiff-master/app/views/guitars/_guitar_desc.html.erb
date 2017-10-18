@@ -1,0 +1,14 @@
+<p>designed by <strong><%= @guitar.user.username %></strong></p>
+<p><%= @guitar.description %></p>
+<div class="guitar-values">
+  <ul class="list-unstyled">
+    <li>Nom : <%= @guitar.name %></li>
+    <li>Nom : <%= @guitar.description %></li>
+    <li>Catégorie : <%= @guitar.category.name %></li>
+    <li>Dexterité : <%= @guitar.dexterity.name %></li>
+    <li>Bois du corps : <span class="guitar-body-wood"><%= @guitar.body_wood.name %></span></li>
+    <li>Couleur : <span class="guitar-color"><%= @guitar.color.name %></span></li>
+    <li>Bois de la touche : <span class="guitar-fret-wood"><%= @guitar.fret_wood.name %></span></li>
+    <li><%= humanized_money(@guitar.price) %> €</li>
+  </ul>
+</div>

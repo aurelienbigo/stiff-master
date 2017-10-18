@@ -1,0 +1,293 @@
+body {
+  background-color: $background;
+}
+
+#wrapper-guitar-new {
+  display: flex;
+}
+
+.guitar-container {
+  flex: 1 0 auto;
+}
+
+.sidebar {
+  .sidebar-options-div {
+    margin-bottom: 60px;
+    padding: 20px 25px 0 25px;
+    // position:;
+  }
+  overflow-y: auto;
+  width:30%;
+  padding: 20px;
+  max-height: calc(100vh - 70px);
+  background-color: $dark-gray;
+  box-shadow: inset -3px 2px 15px 1px $darker-gray;
+  h2 {
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: $light-gray;
+    padding-left: 0px;
+    // font-size: 14px;
+  }
+  p, span {
+    color: $light-gray;
+    margin-bottom: 0px;
+  }
+  textarea, input {
+    background-color: $background;
+  }
+  .form-inline {
+    text-align: right;
+    .choices {
+      text-align: left;
+      background-color: $dark-gray;
+    }
+    input.radio_buttons {
+      display: none;
+    }
+  }
+  .panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+  }
+  .img-choice {
+    flex: 0 0 20%;
+  }
+  .guitar-new-text-form {
+    ::placeholder {
+      color: $gray;
+    }
+    input,
+    textarea {
+      background-color: $dark-gray;
+      border-top: none;
+      box-shadow: none;
+      border-bottom-color: $gray;
+      border-left: none;
+      border-right: none;
+      font-size: 12px;
+      color: $brown-or;
+      padding: 12px;
+    }
+    textarea {
+      height: 70px;
+    }
+    input:focus,
+    textarea:focus {
+      border-bottom-color: $gray;
+      border-bottom: 2px;
+      background-color: $dark-gray2;
+    }
+  }
+  // end of guitar-new-text-form
+  // .choice {
+  //   padding: 20px 25px 0 25px;
+  // }
+  .round-img {
+    img {
+    border-radius: 50%;
+    max-width: 60px;
+    height: 60px;
+    }
+  }
+
+  .no-round-img {
+    img {
+      max-width: 60px;
+      height: 60px;
+    }
+  }
+
+  .input-hidden {
+    input[type=radio] {
+      width: 0;
+    }
+    input {
+      width: 20px;
+    }
+    .no-effect-img {
+      img {
+      border-radius: 0;
+      }
+    }
+    .choice {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $gray;
+      margin: 5px 0;
+      padding: 20px 0;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+    // end of choice
+    .choices {
+      label{
+        max-width: 70px;
+        margin: 10px;
+        text-align: center;
+        p {
+          text-transform: capitalize;
+          color: $light-gray;
+          padding-top: 7px;
+          font-size: 12px;
+        }
+      }
+    }
+    // end of choices
+  }
+  // end of input-hidden
+  .radio_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .category {
+    h3 {
+      padding-bottom: 12px;
+    }
+  }
+
+  // btn-switch
+  .switch .radio_buttons {
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    padding: 0;
+    input {
+      display: none;
+    }
+    span {
+      margin: 0;
+    }
+    label {
+      border : 1px solid black;
+      padding: 10px 20px;
+      width: 120px;
+      text-align: center;
+      text-transform: capitalize;
+    }
+    span:first-child label {
+      border-radius: 4px 0 0 4px;
+    }
+    span:last-child label {
+      border-radius: 0 4px 4px 0;
+    }
+    input[type=radio]:checked + label,
+    input[type=radio]:not(:checked) + label {
+      font-size: 12px;
+    }
+    input[type=radio]:not(:checked) + label {
+      color: $gray;
+      font-weight: bold;
+      background-color: $dark-gray2;
+      border-color: $dark-gray2;
+      box-shadow: inset 0px 2px 5px 1px $dark-gray3;
+    }
+    input[type=radio]:checked + label {
+      border: none;
+      position: relative;
+      top: -2px;
+      background: $lighter-gray;
+      box-shadow: 0px 2px 0px 1px $light-gray;
+      color: $gray;
+    }
+  }
+  #btn-create-guitar {
+    font-size: 14px;
+    width: 100%;
+    color: $brown-or;
+    height: 40px;
+    margin-bottom: 50px;
+  }
+  #btn-create-guitar:hover {
+    background-color: $background;
+    position: relative;
+    box-shadow: 0px 3px 0px 1px $light-gray;
+    top: -3px;
+  }
+}
+// end of sidebar
+
+
+
+// .img_attributs {
+//   height: 37px;
+//   width: 37px;
+//   border-radius: 50%;
+// }
+
+// .img_attributs:focus {
+//   outline: none;
+// }
+
+// #save-btn {
+//   margin: 0 30px;
+// }
+
+// .row_attributs {
+//   h3 {
+//     display: inline-block;
+//     padding-right: 10px;
+//   }
+// }
+
+
+
+
+.vew-guitar {
+  height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guitar-svg {
+  height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  width: 95%;
+  margin: auto;
+}
+
+#template_stratocaster {
+  flex: 1 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+#fun-price-container {
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  #fun-price {
+    font-size: 18px;
+    span {
+      font-size: 20px;
+      color: $brown-or;
+      font-weight: bold;
+    }
+  }
+}
+
+.panel {
+  background-color: $dark-gray;
+}
+
+.panel-default {
+  border: none;
+}

@@ -1,0 +1,14 @@
+$('#card-container_<%= @guitar.id %>').html('<%= j render "pages/card", guitar: @guitar %>');
+// hoverCard();
+$('.fa-star').parent().parent().addClass("stared").css("opacity", 1);
+
+
+$( ".card-product" ).each(function( index ) {
+var body_wood_card = $(this).data("body-wood");
+$(this).find('#corps, #tete').attr('class', body_wood_card);
+var fret_wood_card = $(this).data("fret-wood");
+$(this).find('#touche').attr('class', fret_wood_card);
+var color_card = $(this).data("color");
+$(this).find('#color').attr('class', color_card);
+});
+

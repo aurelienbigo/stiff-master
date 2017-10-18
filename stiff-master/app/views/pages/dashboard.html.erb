@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <% if Time.zone.now.strftime('%H').to_i > 18 %>
+        <h3>Bonsoir <%= current_user.first_name %>,</h3>
+      <% else %>
+        <h3>Bonjour <%= current_user.first_name %>,</h3>
+      <% end %>
+      <div class="col-xs-12 color-8" id="profile-choices">
+        <div class="tabs cl-effect-7">
+          <a class="tab active" href="#" data-target="#tab-infos">Infos</a>
+          <a class="tab" href="#" data-target="#tab-orders">Mes commandes</a>
+          <a class="tab" href="#" data-target="#tab-guitars">Mes Vélos</a>
+        </div>
+      </div>
+
+      <!-- Profil informations -->
+      <div class="col-xs-12 col-sm-4 tab-content" id="tab-infos">
+        <h2 class="dashboard-h">Informations du profil</h2>
+        <div id="dashboard-form">
+          <%= simple_form_for(@user, url: dashboard_edit_path) do |f| %>
+            <%= f.error_notification %>
+              <%= f.input :email, placeholder: "e-mail", label: "E-mail" %>
+              <%= f.input :first_name, placeholder: "Prénom", label: "Prénom"%>
+              <%= f.input :last_name, placeholder: "Nom", label: "Nom" %>
+              <%= f.input :phone, placeholder: "N° téléphone", label: "Numéro de téléphone" %>
+              <%= f.button :submit, "Enregistrer les modifications", class: "btn btn-primary" %>
+          <% end %>
+          <!-- My addresses -->
+          <%= render 'addresses' %>
+        </div>
+
+
+        <!-- My orders -->
+        <div class="col-xs-10 col-xs-offset-1 tab-content hidden" id="tab-orders">
+          <div class="raw-order">
+            <div class="raw-order-title order-id">Référence</div>
+            <div class="raw-order-title order-guitar">Guitare</div>
+            <div class="raw-order-title order-amount">Montant</div>
+            <div class="raw-order-title order-date">Date</div>
+            <div class="raw-order-title order-status">Statut</div>
+          </div>
+
+          <% @orders.each do |order| %>
+            <%= link_to order_path(order) do %>
+              <div class="raw-order raw-link-order">
+                <div class="raw-order-items order-id"><%= order.id %></div>
+                <div class="raw-order-items order-guitar"><%= order.guitar.name %></div>
+                <div class="raw-order-items order-amount"><%= order.price %> €</div>
+                <div class="raw-order-items order-date"><%= order.created_at.strftime('%e / %m / %Y à %Hh%M') %></div>
+                <div class="raw-order-items order-status"><%= order.state %></div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+
+      <!-- My guitars -->
+      <div class="tab-content hidden" id="tab-guitars">
+        <% if !@my_guitars.empty? %>
+          <% @my_guitars.each do |guitar| %>
+            <div class="col-sm-6">
+              <div id="card-container_<%= guitar.id %>">
+                <%= render 'card_collection', guitar: guitar %>
+              </div>
+              <div class="text-right card-guitar-edit-btn">
+                <%= link_to "Edit", edit_guitar_path(guitar), class: "btn btn-fade-small collection-guitar-edit-btn" %>
+                <%= link_to "Acheter", new_guitar_order_path(guitar_id: guitar.id), class: "btn btn-fade-small collection-guitar-edit-btn buy-btn" %>
+              </div>
+            </div>
+          <!-- end of col-sm-6 -->
+        <% end %>
+        <!-- end of block -->
+      <% else %>
+        <div class="text-center">
+          <p>Vous n'avez créé aucune guitare...</p>
+          <%= link_to "Personnaliser une guitare", new_guitar_path, class: "btn btn-fade-small collection-guitar-edit-btn" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      handle_index_guitars();
+    });
+  <% end %>
+<% end %>
+

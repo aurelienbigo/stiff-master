@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bienvenue <%= @user.first_name %></title>
+
+    <style>
+      body {
+        padding: 30px;
+        width: 800px;
+        font-family: avenir;
+        color: #555555;
+      }
+      ul {
+        list-style: none;
+        padding-bottom: 40px;
+      }
+      h1 {
+        font-weight: normal;
+        color: ;
+      }
+      h3:hover {
+        cursor: pointer;
+      }
+      img {
+        width: 150px;
+      }
+      a {
+        text-decoration: none;
+        color: #555555;
+      }
+      .link-site {
+        border-top: 1px solid #555555;
+        border-bottom: 1px solid #555555;
+        padding: 10px 0;
+      }
+      .end-message {
+        padding-top: 40px;
+      }
+      .link {
+        text-align: center;
+      }
+      .gold {
+        color: #C6B975;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bienvenue <%= @user.first_name %> !</h1>
+
+    <p>Merci de nous rejoindre sur <span class="gold">Barde</span>. Voici un résumé du fonctionnement du site :</p>
+    <ul>
+      <li>- <span class="gold">Personnalisez</span> votre guitare en choisissant un modèle puis parmi plus d’un million de possibilités.</li>
+      <li>- Vous avez la possibilité de <span class="gold">partager</span> votre création sur les réseaux sociaux avant et après son achat.</li>
+      <li>- Une fois validée, votre <span class="gold">commande</span> sera acceptée par un luthier.</li>
+      <li>- La <span class="gold">fabrication</span> peut prendre entre 3 et 8 semaines, en fonction de la charge de travail du luthier et de la complexité de la guitare. Soyez patient,</li>
+      <li>- La guitare est ensuite <span class="gold">livrée</span> directement chez vous avec le plus grand soin.</li>
+      <li>- Vous n’avez plus qu’à <span class="gold">jouer</span> et nous <span>partagez</span> vos créations !</li>
+    </ul>
+
+    <div class="link">
+      <a href="http://barde.guitars/guitars/new" class="link-site">Commencer la création</a>
+    </div>
+
+    <p class="end-message">Toute l’équipe reste disponible pour répondre à vos éventuelles questions, et vous souhaite une agréable expérience sur le site.</p>
+
+    <p>Marius & Lucien</p>
+
+    <%= image_tag('http://res.cloudinary.com/lucien/image/upload/v1489918263/Logo_barde_couleurs_djb3xd.png') %>
+
+    <p class="link">contact@barde.guitars</p>
+    <div class="link">
+      <a href="https://www.facebook.com/barde.guitars/">Facebook -</a>
+      <a href="https://twitter.com/BardeGuitars">Twitter -</a>
+      <a href="#">Instagram</a>
+    </div>
+
+  </body>
+</html>
+
+
+

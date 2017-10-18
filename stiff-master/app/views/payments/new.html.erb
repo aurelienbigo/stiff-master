@@ -1,0 +1,112 @@
+<span class="attributs" <%= render 'pages/data_card_product', guitar: @guitar%> ></span>
+<div class="wrapper guitar-show-wrapper bg-background">
+  <div class="container guitar-description-container">
+
+    <div class="row section-title">
+      <div class="title-middle-line"></div>
+      <h1 class="text-center section-title-h1">La commande de votre</br><%= @guitar.name %></h1>
+      <div class="title-middle-line"></div>
+    </div>
+    <!-- 2nd row -->
+
+    <div class="row order-steps-details-row">
+      <div class="col-sm-2 col-sm-offset-4 text-center order-steps-details-col-2">
+        <%= image_tag('number-one-icon.png', id: "number-two-icon") %>
+        <p>Confirmation de l'adresse</p>
+      </div>
+      <div class="col-sm-2 text-center order-steps-details-col-1">
+        <%= image_tag('number-two-icon.png', id: "number-one-icon") %>
+        <p>Récapitulatif & paiement</p>
+      </div>
+    </div>
+    <!-- row end -->
+
+    <div class="row">
+
+      <!-- card-product : container of guitar image -->
+      <div class="card-product" data-color="<%= @guitar.color.name if @guitar.color.present?%>" data-body-wood="<%= @guitar.body_wood.name %>" data-fret-wood="<%= @guitar.fret_wood.name %>">
+
+        <div class="show-guitar-img-container">
+          <div class="svg_show">
+            <%= render 'guitars/guitar_template' %>
+          </div>
+        </div>
+        <!-- show-guitar-img-container end -->
+
+      </div>
+      <!-- end of card-product -->
+
+      <div class="show-guitar-infos-container">
+        <div class="row">
+          <div class="col-sm-3 text-center">
+            <%= image_tag('user-avatar-icon.png', class: "show-guitar-info-img") %>
+            <div class="show-guitar-infos-data">
+              <p><%= current_user.username %></p>
+              <p><%= current_user.email %></p>
+              <p><%= current_user.first_name %></p>
+              <p><%= current_user.last_name %></p>
+              <p><%= current_user.phone %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 text-center">
+            <%= image_tag(@guitar.category.picture, class: "show-guitar-info-img") %>
+            <div class="show-guitar-infos-data">
+              <p><%= @guitar.description %></p>
+              <p>-</p>
+              <p><%= @guitar.category.name %></p>
+              <p>-</p>
+              <p><%= @guitar.dexterity.name %></p>
+              <p>-</p>
+              <p>Bois du corps : <%= @guitar.body_wood.name %></p>
+              <p>Bois du manche : <%= @guitar.fret_wood.name %></p>
+              <% if @guitar.color.present? %>
+                <p>Couleur : <%= @guitar.color.name %></p>
+              <% end %>
+              <p>Pickguard : <%= @guitar.pickguard.name %></p>
+              <p>Micros : <%= @guitar.pickup.name %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 text-center">
+            <%= image_tag('localization-icon.png', class: "show-guitar-info-img") %>
+            <div class="show-guitar-infos-data">
+              <p><%= @order.delivery_address %></p>
+              <p><%= @order.zip_code %></p>
+              <p><%= @order.city %></p>
+              <p><%= @order.country %></p>
+            </div>
+          </div>
+          <div class="col-sm-3 text-center" id="payment-btn">
+            <%= form_tag guitar_order_payments_path(@guitar, @order) do %>
+              <article>
+                <label class="price">
+                  <p><%= humanized_money(@order.price) %> €</p>
+                </label>
+              </article>
+
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-email="<%= @order.user.email %>"
+                data-name="My guitar"
+                data-description="Guitar <%= @order.guitar_sku %>"
+                data-amount="<%= @order.price_cents %>"
+                data-currency="<%= @order.price.currency %>">
+              </script>
+
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- end of 2nd row -->
+  </div>
+  <!-- end of container -->
+</div>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      show_guitar();
+    });
+  <% end %>
+<% end %>

@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="container guitar-index-container">
+    <div class="row section-title">
+      <div class="title-middle-line"></div>
+      <h1 class="text-center section-title-h1">Découvrez les guitares personnalisées par nos utilisateurs</h1>
+      <div class="title-middle-line"></div>
+    </div>
+    <div class="row">
+      <% @guitars.each do |guitar|%>
+        <div class="col-sm-6 guitar-content">
+
+          <div id="card-container_<%= guitar.id %>">
+            <%= render 'pages/card', guitar: guitar %>
+          </div>
+
+        </div>
+        <!-- end of col-sm-6 guitar-content -->
+      <% end %>
+      <!-- end of each block -->
+    </div>
+    <!-- end of row -->
+
+    
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="index-perso-guitar-btn">
+          <%= link_to "Je personnalise ma guitare", new_guitar_path, class: "btn btn-fade-small collection-guitar-edit-btn  buy-btn" %>
+        </div>
+      </div>
+    </div>
+
+  </div>   end
+  <!-- end of container -->
+</div>
+<!-- end of wrapper -->
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      handle_index_guitars();
+    });
+  <% end %>
+<% end %>

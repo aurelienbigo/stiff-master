@@ -1,0 +1,50 @@
+.payment-new-wrapper {
+  padding: 25px 0;
+  .payment-new-container {
+    margin: 0 auto;
+    background-color: $lighter-gray;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px 0px $light-gray;
+    padding: 80px 60px;
+    .card {
+      display: flex;
+      justify-content: center;
+      #order-recap-img-container {
+        position: relative;
+        max-width: 100%;
+      }
+    }
+  }
+}
+// .payment-new-guitar-infos-data {
+//   text-align: left;
+//   padding-left: 85px;
+//   line-height: 19px;
+//   padding-top: 25px;
+//   font-size: 12px;
+//   p {
+//     margin: 0;
+//   }
+// }
+.price p {
+  font-size:26px;
+}
+
+.stripe-button-el {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  -webkit-transform: perspective(1px) translateZ(0) !important;
+  transform: perspective(1px) translateZ(0) !important;
+  box-shadow: 0 0 1px transparent !important;
+  -webkit-transition-duration: 0.3s !important;
+  transition-duration: 0.3s !important;
+  -webkit-transition-property: transform !important;
+  transition-property: transform !important;
+}
+.stripe-button-el:hover, .stripe-button-el:focus, .stripe-button-el:active {
+  -webkit-transform: scale(1.1) !important;
+  transform: scale(1.1) !important;
+}
+// -------------
+//     HOVER
+// -------------

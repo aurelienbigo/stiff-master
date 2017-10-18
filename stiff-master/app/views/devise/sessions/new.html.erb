@@ -1,0 +1,44 @@
+
+<div class="wrapper bg-lighter-grey bg-screen-height wrapper-lighter-grey">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="signbox-content">
+          <h2 class ="text-center">Connexion</h2>
+          <div class="facebook-connect">
+            <a class="btn btn-block btn-social btn-facebook" href="/users/auth/facebook">
+              <span class="fa fa-facebook"></span>
+                Connexion avec Facebook
+            </a>
+          </div>
+          <div class="signup-or-separator">
+            <h6>or</h6>
+          <hr>
+          </div>
+          <div class="signup-form">
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :email, required: false, autofocus: true %>
+                <%= f.input :password, required: false %>
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Connexion", class: "btn btn-primary" %>
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br />
+                <% end -%>
+              </div>
+
+            <% end %>
+          </div>
+          <div class="signup-links">
+            <span>Vous n'avez pas de compte ?  </span>
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Inscrivez-vous", new_registration_path(resource_name) %><br />
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

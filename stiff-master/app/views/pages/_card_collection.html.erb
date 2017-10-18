@@ -1,0 +1,40 @@
+<div class="card-product" <%= render 'pages/data_card_product', guitar: guitar%>>
+  <h3 class="card-title"><%= guitar.name %></h3>
+  <div class="card">
+    <div class="card-guitar-image-container">
+      <%= render 'guitars/guitar_template'%>
+    </div>
+    <!-- end of card-guitar-image-container -->
+    <%= link_to "", guitar_path(guitar), class: "card-link" %>
+<!--     <div class="card-star">
+      <%#= render 'guitars/like', guitar: guitar %>
+    </div>
+ -->
+ </div>
+  <!-- end of card -->
+  <div class="card-sub-info">
+<!--     <p><%#= guitar.get_likes.size %> <span><i class="fa fa-star"></i></span> |
+ -->      <% if guitar.price.nil? %>
+        <span>Pas de prix</span>
+      <% else %>
+        <%= humanized_money(guitar.price) %> €
+      <% end %>
+    </p>
+    <div class="card-description">
+      <h4>créée le : <%= guitar.created_at.strftime('%e / %m / %Y à %Hh%M')  %></h4>
+      <div><%= guitar.description %></div>
+    </div>
+  </div>
+  <!-- end of sub-info -->
+</div>
+<!-- end of card-product -->
+<%# content_for(:after_js) do %>
+  <%#= javascript_tag do %>
+<!--     var body_wood_card = $('.card-product').data("body-wood");
+    $('.card-product').find('#corps, #tete').attr('class', body_wood_card);
+    var fret_wood_card = $('.card-product').data("fret-wood");
+    $('.card-product').find('#touche').attr('class', fret_wood_card);
+    var color_card = $('.card-product').data("color");
+    $('.card-product').find('#color').attr('class', color_card);
+ -->  <%# end %>
+<%# end %>

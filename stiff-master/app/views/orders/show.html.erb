@@ -1,0 +1,98 @@
+<span class="attributs" <%= render 'pages/data_card_product', guitar: @order.guitar %> ></span>
+<div class="wrapper">
+  <div class="container">
+
+    <div class="row row-order">
+      <div class="col-sm-9">
+        <h2>Commande n° : <%= @order.number %></h2>
+      </div>
+      <div class="col-sm-3">
+        <p>Date : <%= @order.created_at.strftime('%e / %m / %Y à %Hh%M') %></p>
+      </div>
+    </div>
+
+    <div class="row row-order">
+      <!-- info guitar -->
+      <div class="col-sm-4">
+        <h2><%= @order.guitar.name %></h2>
+        <p>Bois du corps : <%= @order.guitar.body_wood.name %></p>
+        <p>Bois de la touche : <%= @order.guitar.fret_wood.name %></p>
+        <p>Couleur : <%= @order.guitar.color.name %></p>
+        <p>Pickguard : <%= @order.guitar.color.name %></p>
+        <p>Micros : <%= @order.guitar.pickup.name %></p>
+      </div>
+      <!-- View guitar -->
+      <div class="col-sm-8">
+        <%= render 'guitars/guitar_template' %>
+      </div>
+    </div>
+
+    <div class="row row-order">
+      <div class="col-sm-6">
+        <h2>Informations</h2>
+      </div>
+      <div class="col-sm-6">
+        <h2>Paiement</h2>
+        <p>Type de carte : <%= @order.card_brand %></p>
+        <p>Pays : <%= @order.card_country %></p>
+        <p>Date d'expiration : <%= @order.card_exp_m %>/<%= @order.card_exp_y %></p>
+        <p>Numéro : **** **** **** <%= @order.card_last %></p>
+        <h3>Prix</h3>
+        <p>Prix HT :  <%= humanized_money(@order.price * 0.8) %> €</p>
+        <p>TVA :      <%= humanized_money(@order.price * 0.2) %> €</p>
+        <p>Total TTC: <%= humanized_money(@order.price) %> €</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      show_guitar();
+    });
+  <% end %>
+<% end %>
+
+
+<!-- <div class="wrapper">
+  <div class="container">
+
+    <div class="row row-order">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1>Commande n° : <%= @order.number %></h1>
+        <p>Date : <%= @order.created_at.strftime('%e / %m / %Y à %Hh%M') %></p>
+        <p>Statut : <%= @order.state %></p>
+      </div>
+    </div>
+
+    <div class="row row-order">
+      <div class="col-sm-5 col-sm-offset-1">
+        <p>Nom : <%= @order.guitar.name %></p>
+        <p>Style : <%= @order.guitar.category.name %></p>
+        <p>Type : <%= @order.guitar.dexterity.name %></p>
+      </div>
+      <div class="col-sm-5">
+        <p>Bois du corps : <%= @order.guitar.body_wood.name %></p>
+        <p>Bois de la touche : <%= @order.guitar.fret_wood.name %></p>
+        <p>Pickguard : <%= @order.guitar.color.name %></p>
+      </div>
+    </div>
+
+    <div class="row row-order">
+      <div class="col-sm-5 col-sm-offset-1">
+        <h3>Méthode de paiement</h3>
+            <p>Type de carte : <%= @order.card_brand %></p>
+            <p>Pays : <%= @order.card_country %></p>
+            <p>Date d'expiration : <%= @order.card_exp_m %>/<%= @order.card_exp_y %></p>
+            <p>Numéro : **** **** **** <%= @order.card_last %></p>
+      </div>
+      <div class="col-sm-5">
+        <h3>Prix</h3>
+        <p>Prix HT :  <%= humanized_money(@order.price * 0.8) %> €</p>
+        <p>TVA :      <%= humanized_money(@order.price * 0.2) %> €</p>
+        <p>Total TTC: <%= humanized_money(@order.price) %> €</p>
+      </div>
+    </div>
+  </div>
+</div> -->

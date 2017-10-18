@@ -1,0 +1,30 @@
+body {
+  position: static !important;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+.guitar-index-container,
+.guitar-collection-container {
+  h1 {
+    padding: 55px 30px;
+  }
+}
+
+.section-title {
+  color: $brown-or;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .section-title-h1 {
+    margin: 0 20px;
+  }
+  .title-middle-line {
+    width: 23%;
+    height: 0;
+    border-bottom: 1px solid $light-gray;
+  }
+}

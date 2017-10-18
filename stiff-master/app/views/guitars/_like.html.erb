@@ -1,0 +1,9 @@
+<% if current_user.nil? %>
+   <%= link_to '<i class="fa fa-star-o card-star-icon"></i>'.html_safe, like_guitar_path(guitar), class: 'like_guitar' %>
+<% else %>
+  <% if current_user.voted_up_on? guitar %>
+    <%= link_to '<i class="fa fa-star card-star-icon"></i>'.html_safe, like_guitar_path(guitar), remote: true, class: 'unlike_guitar' %>
+  <% else %>
+    <%= link_to '<i class="fa fa-star-o card-star-icon"></i>'.html_safe, like_guitar_path(guitar), remote: true, class: 'like_guitar' %>
+  <% end %>
+<% end %>

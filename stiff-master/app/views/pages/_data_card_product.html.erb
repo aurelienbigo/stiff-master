@@ -1,0 +1,8 @@
+data-dexterity="<%= guitar.dexterity.name %>"
+<% if guitar.color.present? %>
+  data-color="<%= guitar.color.identifier %>"
+<% end %>
+data-body-wood="<%= guitar.body_wood.identifier %>"
+data-fret-wood="<%= guitar.fret_wood.identifier %>"
+data-pickguard="<%= guitar.pickguard.identifier %>"
+data-pickup="<%= guitar.pickup.identifier %>"

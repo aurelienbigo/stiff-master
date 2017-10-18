@@ -1,0 +1,41 @@
+<div class="wrapper bg-background bg-screen-height wrapper-login">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="signbox-content bg-beige">
+          <h2 class ="text-center">Inscription</h2>
+          <div class="facebook-connect">
+            <a class="btn btn-block btn-social btn-facebook" href="/users/auth/facebook">
+              <span class="fa fa-facebook"></span>
+                Inscription avec Facebook
+            </a>
+          </div>
+          <div class="signup-or-separator">
+          <hr>
+          </div>
+          <div class="signup-form">
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+                <%= f.input :email, required: true, autofocus: true %>
+                <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+                <%= f.input :password_confirmation, required: true %>
+              </div>
+
+              <div class="form-actions">
+                <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="signup-links">
+            <span>Vous avez un compte ?  </span>
+            <%- if controller_name != 'sessions' %>
+              <%= link_to "Connectez-vous", new_session_path(resource_name) %><br />
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

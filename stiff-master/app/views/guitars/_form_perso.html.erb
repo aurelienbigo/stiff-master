@@ -1,0 +1,184 @@
+<div class="wrapper" id="wrapper-guitar-new">
+  <div class="sidebar">
+    <div class="simple-form">
+      <%= simple_form_for(@guitar) do |f| %>
+
+        <div class="sidebar-options-div" id="sidebar-guitar-options-div">
+          <h2>Guitare</h2>
+          <div class="choice">
+            <h3>Nom</h3>
+            <div class="guitar-new-text-form"><%= f.input :name, label: false, placeholder: "Donnez un nom au vélo de vos rêves" %></div>
+          </div>
+          <div class="choice switch category">
+            <h3>Catégorie</h3>
+            <div class="input-inline">
+              <%= f.input :category_id, collection: Category.all, as: :radio_buttons, :item_wrapper_class => 'inline', label: false %>
+            </div>
+          </div>
+          <div class="choice switch dexterity">
+            <div class="input-inline">
+              <%= f.input :dexterity_id, collection: Dexterity.all.map { |dexterity| [dexterity.name, dexterity.id, { "data-name" => dexterity.name.downcase }] }, as: :radio_buttons, :item_wrapper_class => 'inline', label: false %>
+            </div>
+          </div>
+        </div>
+        <!-- end of sidebar-guitar-options -->
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="sidebar-options-div" id="sidebar-corps-options-div">
+            <h2>Corps</h2>
+
+            <!-- Body_wood -->
+            <div class="round-img panel panel-default form-inline body_wood input-hidden">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="choice panel-heading" role="tab" id="headingOne">
+                  <h3 class="panel-title">Bois
+                  <% BodyWood.all.each do |body_wood| %>
+                    <span class="img-choice body-wood-choice" style="display: none;" " data-id="<%= body_wood.id %>"><%= image_tag(body_wood.picture) %></span>
+                  <% end %>
+                  </h3>
+                </div>
+              </a>
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="choices panel-body" >
+                  <%= f.input :body_wood_id, collection: BodyWood.all, as: :radio_buttons, :label_method => lambda { |body_wood|
+                      if (body_wood.price - @guitar.body_wood.price).to_i > 0
+                        body_wood_sign = "+"
+                      else
+                        body_wood_sign = ""
+                      end
+                      image_tag(body_wood.picture) + "<p class='body-wood-name' data-body-wood='#{body_wood.identifier}'>#{body_wood.name}</p>".html_safe + body_wood_sign + "<span class='body-wood-price'>#{humanized_money(body_wood.price - @guitar.body_wood.price)}</span><span> €</span>".html_safe }, label: false %>
+                </div>
+              </div>
+            </div>
+            <!-- Body_wood_end -->
+
+            <!-- color -->
+            <div class="round-img panel panel-default form-inline color input-hidden">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <div class="choice panel-heading" role="tab" id="headingFive">
+                  <h3 class="panel-title">Couleur
+                  <% Color.all.each do |color| %>
+                    <span style="display: none;" data-id="<%= color.id %>">
+                      <%= image_tag(color.picture) %>
+                    </span>
+                  <% end %>
+                  </h3>
+                </div>
+              </a>
+              <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="choices panel-body">
+                  <%= f.input :color_id, collection: Color.all, as: :radio_buttons, :label_method => lambda { |color|
+                      image_tag(color.picture) + "<p class='color-name' data-color='#{color.identifier}'>#{color.name}</p>".html_safe }, label: false %>
+                </div>
+              </div>
+            </div>
+            <!-- color end -->
+
+            <!-- Pickups -->
+            <div class="no-round-img panel panel-default form-inline bpickup input-hidden">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <div class="choice panel-heading" role="tab" id="headingFour">
+                  <h3 class="panel-title">Micros
+                  <% Pickup.all.each do |pickup| %>
+                    <span class="img-choice pickup-choice" style="display: none;" data-id="<%= pickup.id %>"><%= image_tag(pickup.picture) %></span>
+                  <% end %>
+                  </h3>
+                </div>
+              </a>
+              <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                <div class="choices panel-pickup" >
+                  <%= f.input :pickup_id, collection: Pickup.all, as: :radio_buttons, :label_method => lambda { |pickup|
+                      if (pickup.price - @guitar.pickup.price).to_i > 0
+                        pickup_sign = "+"
+                      else
+                        pickup_sign = ""
+                      end
+                      image_tag(pickup.picture) + "<p class='pickup-name' data-pickup='#{pickup.identifier}'>#{pickup.name}</p>".html_safe + pickup_sign + "<span class='pickup-price'>#{humanized_money(pickup.price - @guitar.pickup.price)}</span><span> €</span>".html_safe }, label: false %>
+                </div>
+              </div>
+            </div>
+            <!-- Pickups_end -->
+
+          </div>
+          <!-- end of sidebar-corps-options-div -->
+
+          <div class="sidebar-options-div" id="sidebar-manche-options-div">
+            <h2>Manche</h2>
+          <!-- Fret_wood -->
+            <div class="round-img panel panel-default form-inline fret_wood input-hidden">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="choice panel-heading" role="tab" id="headingTwo">
+                  <h3 class="panel-title">Bois de la touche
+                  <% FretWood.all.each do |fret_wood| %>
+                    <span style="display: none;" data-id="<%= fret_wood.id %>">
+                      <%= image_tag(fret_wood.picture) %>
+                    </span>
+                  <% end %>
+                  </h3>
+                </div>
+              </a>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="choices panel-body">
+                  <%= f.input :fret_wood_id, collection: FretWood.all, as: :radio_buttons, :label_method => lambda { |fret_wood|
+                      if (fret_wood.price - @guitar.fret_wood.price).to_i > 0
+                        fret_wood_sign = "+"
+                      else
+                        fret_wood_sign = ""
+                      end
+                      image_tag(fret_wood.picture) + "<p class='fret-wood-name' data-fret-wood='#{fret_wood.identifier}'>#{fret_wood.name}</p>".html_safe + fret_wood_sign + "<span class='fret-wood-price'>#{humanized_money(fret_wood.price - @guitar.fret_wood.price)}</span><span> €</span>".html_safe }, label: false %>
+                </div>
+              </div>
+            </div>
+          <!-- Fret_wood_end -->
+          </div>
+          <!-- end of sidebar-manche-options-div -->
+
+          <div class="sidebar-options-div" id="sidebar-accessoires-options-div">
+           <h2>Accessoires</h2>
+
+            <!-- Pickguard  -->
+            <div class="round-img panel panel-default form-inline pickguard input-hidden">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div class="choice panel-heading" role="tab" id="headingThree">
+                  <h3 class="panel-title">Pickguard
+                  <% Pickguard.all.each do |pickguard| %>
+                    <span style="display: none;" data-id="<%= pickguard.id %>">
+                      <%= image_tag(pickguard.picture) %>
+                    </span>
+                  <% end %>
+                  </h3>
+                </div>
+              </a>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="choices panel-body" >
+                  <%= f.input :pickguard_id, collection: Pickguard.all, as: :radio_buttons, :label_method => lambda { |pickguard|
+                      if (pickguard.price - @guitar.pickguard.price).to_i > 0
+                        pickguard_sign = "+"
+                      else
+                        pickguard_sign = ""
+                      end
+                      image_tag(pickguard.picture) + "<p class='pickguard-name' data-pickguard='#{pickguard.identifier}'>#{pickguard.name}</p>".html_safe + pickguard_sign + "<span class='pickguard-price'>#{humanized_money(pickguard.price - @guitar.pickguard.price)}</span><span> €</span>".html_safe }, label: false %>
+                </div>
+              </div>
+            </div>
+            <!-- end of Pickguard  -->
+          </div>
+        </div>
+        <!-- end of sidebar-accessoires-options-div -->
+
+        <div class="form-inline"><%= f.button :submit, value: "Enregistrer cette guitare", class: "btn", id: "btn-create-guitar" %></div>
+      <% end %>
+      <!-- end of simple_form_for block -->
+    </div>
+    <!-- end of simple_form div -->
+  </div>
+  <!-- end of sidebar -->
+
+  <div class="guitar-container">
+    <div class="guitar-svg">
+      <div id="fun-price-container">
+        <p id="fun-price"><span><%= humanized_money(@guitar.price) %> €</span></p>
+      </div>
+        <%= render 'guitar_template' %>
+    </div>
+  </div>
+</div>

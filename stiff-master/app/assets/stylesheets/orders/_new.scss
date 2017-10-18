@@ -1,0 +1,32 @@
+.new-order-form-wrapper {
+  padding: 80px 0;
+  .new-order-form-container {
+    margin: 0 auto;
+    .form-content {
+      padding: 50px 0;
+    }
+  }
+}
+.order-steps-details-row {
+  padding: 30px 0;
+  p {
+    padding-top: 15px;
+    font-size: 12px;
+  }
+  .order-steps-details-col-1 {
+    p {
+      color: $dark-gray;
+    }
+    #number-one-icon {
+      opacity: 0.7;
+    }
+  }
+  .order-steps-details-col-2 {
+    p {
+      color: $light-gray;
+    }
+    #number-two-icon {
+      opacity: 0.3;
+    }
+  }
+}

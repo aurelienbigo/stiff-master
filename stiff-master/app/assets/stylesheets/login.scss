@@ -1,0 +1,44 @@
+.wrapper-login {
+  display: flex;
+}
+
+.signbox-content {
+  background-color: $beige;
+  margin: 30px;
+  border: 1px solid $brown-or;
+  box-shadow: 2px 4px 10px $gray;
+  align-items: center;
+}
+
+.facebook-connect {
+  margin: 20px;
+}
+
+.fa-facebook {
+  font-size: 25px;
+}
+
+.signup-or-separator {
+  display: flex;
+
+  h6 {
+  background-color: $beige;
+  padding: 8px;
+  text-align: center;
+  }
+
+ hr {
+  margin: -10px auto 10px;
+  border-color: $gray;
+  border-style: inset;
+  }
+}
+
+.signbox-content {
+  padding: 30px;
+}
+
+.signup-links {
+  margin-top: 20px;
+  padding-top: 20px;
+}

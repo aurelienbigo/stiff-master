@@ -1,0 +1,25 @@
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: $gray;
+  font-size: 14px;
+  margin-top: 50px;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+   a {
+    color: $gray;
+    opacity: 0.45;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0px 10px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

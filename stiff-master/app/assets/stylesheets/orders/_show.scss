@@ -1,0 +1,12 @@
+.row-order {
+  margin: 15px auto;
+  background-color: $lighter-gray;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px 0px $light-gray;
+  padding: 35px 55px;
+  display: flex;
+  align-items: center;
+  p, h2{
+    margin: 0;
+  }
+}

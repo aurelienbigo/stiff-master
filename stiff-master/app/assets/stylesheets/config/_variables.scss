@@ -1,0 +1,51 @@
+/* -------------------------------------
+ * Fonts
+ * ------------------------------------- */
+// Google fonts
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+// @import url("https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700|Lato:300,400,700");
+
+$base-font: "Open Sans", "Helvetica", "sans-serif";
+$header-font: "Open Sans", "Helvetica", "sans-serif";
+
+// Local fonts (uncomment following lines)
+// @font-face {
+//   font-family: "Font Name";
+//   src: font-url('FontFile.eot');
+//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
+//        font-url('FontFile.woff') format('woff'),
+//        font-url('FontFile.ttf') format('truetype')
+// }
+// $my-font: "Font Name";
+
+// Font-size and line-height
+$base-size: 16px;
+$base-height: 1.4;
+
+/* -------------------------------------
+ * Colors
+ * ------------------------------------- */
+// Scheme
+$brand-color:    #D23333;
+
+$red:            #EE5F5B;
+$blue:           #469AE0;
+$yellow:         #FDB631;
+$orange:         #E67E22;
+$green:          #32B796;
+$brown-or:       #8f7c4f;
+$brown-or2:      #463c26;
+$brown-or3:      #443a24;
+$light-brown-or: #A8925D;
+$beige:          #c1bab4;
+
+$lighter-gray:   #F5F5F5;
+$light-gray:     #C0C0C0;
+$gray:           #656565;
+$dark-gray:      #444444;
+$dark-gray2:     #404040;
+$dark-gray3:     #313131;
+$darker-gray:    #202020;
+
+$background2:     #EEE7E1;
+$background:      #F8F8F8;
