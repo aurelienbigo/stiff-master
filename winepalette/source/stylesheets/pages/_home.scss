@@ -1,7 +1,6 @@
 #home {
-  background-color: #D23333;
-  color: white;
-  height: 100vh;
+  background-color: white;
+  color: dark-gray;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -13,5 +12,27 @@
     color: rgba(0,0,0,0.4);
     font-weight: bold;
     font-size: 16px;
+  }
+
+  h1 {
+    color: #5A3151;
+    font-size: 2em;
+    margin-top: 0 !important;
+    margin-bottom: 2em;
+  }
+  h2 {
+    color: #D24770;
+    font-size: 1.5em;
+  }
+  .btn-contact {
+    background-color: #D24770;
+    border: 1px solid#D24770;
+    border-radius: 20px;
+   width: 10em;
+    &:hover {
+      background-color: white;
+      color: #D24770;
+      border: 1px solid #D24770;
+    }
   }
 }
