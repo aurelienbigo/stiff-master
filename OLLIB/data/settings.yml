@@ -1,0 +1,13 @@
+# settings.yml
+site:
+  title: Olli-B Environnement - Traitement et valorisation de vos déchets.
+  description: "Nouos sommes les spécialistes de la collecte, du traitement et de la valorisation de vos déchets industriels."
+  url: "http://ollibenvironnement.github.io"
+
+
+copyright:
+  developer:
+    name: Aurelien Bigo
+
+google_analytics:
+  tracking_code: "Your-tracking-code"
