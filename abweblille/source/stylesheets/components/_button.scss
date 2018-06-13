@@ -1,0 +1,21 @@
+.home-btn {
+  color: white !important;
+  background-color: $my-red;
+  border: 1px solid $my-red;
+  &:hover {
+    border: 1px $my-red solid;
+    background-color: transparent !important;
+    color: $my-red !important;
+  }
+}
+.btn-contact {
+  color: white !important;
+  background-color: $my-red;
+  border: 1px solid $my-red;
+  margin-bottom: 1em;
+  &:hover {
+    border: 1px $my-red solid;
+    background-color: transparent !important;
+    color: $my-red !important;
+  }
+}

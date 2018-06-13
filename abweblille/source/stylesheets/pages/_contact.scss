@@ -1,0 +1,39 @@
+.contact-container {
+  body {
+    background-color: #F4F4F4;
+  }
+  background: #F4F4F4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  margin: 5% 5%;
+  text-align: center;
+  border-radius: 15px;
+  color: gray;
+  p, a {
+    text-decoration: none;
+    color: gray;
+    margin: 0 0 12.5px;
+    &:hover {
+      text-decoration: none;
+      color: $my-red;
+    }
+  }
+}
+.picto-contact {
+  font-size: 40px;
+  padding: 10px;
+}
+.formulaire {
+  margin-bottom: 25px;
+}
+.contact-form {
+  margin-bottom: 5%;
+}
+
+.thanks-container {
+  margin-top: 10em;
+  margin-bottom: 10em;
+}
+
