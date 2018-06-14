@@ -1,0 +1,31 @@
+.img-service {
+  width: 20em;
+  margin-bottom: 2em;
+  border-radius: 1%;
+}
+
+h1 {
+  color: $my-red;
+  margin: 1em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 1em;
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-color: $my-red;
+}
+
+.service-text {
+  display: flex;
+  align-itmes: center;
+}
+
+ul {
+    list-style: none;
+    margin-right: 1.5em;
+    margin-left: -0.5em;
+}
+

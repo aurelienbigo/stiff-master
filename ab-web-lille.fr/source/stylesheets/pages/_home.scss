@@ -1,0 +1,56 @@
+// Specific CSS for your home-page
+body {
+  font-style: avenir;
+  color: gray;
+  background-color: white;
+}
+
+#home {
+  color: white;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    margin-top: -2em;
+    font-style: helvetica;
+    color: white;
+  }
+  a {
+    color: rgba(0,0,0,0.4);
+    font-weight: bold;
+    font-size: 18px;
+    font-style: helvetica;
+  }
+}
+.banner {
+  height: 80vh;
+  background-size: cover !important;
+  background: center;
+}
+
+.card-home {
+  h2 {
+    font-size: 28px !important;
+    color: $my-red;
+    text-decoration: none;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+.picto-home {
+  font-size: 45px;
+}
+.container-card {
+  margin-top: 50px;
+}
+.text-home {
+  margin-top: 2em;
+  text-align: center;
+}
